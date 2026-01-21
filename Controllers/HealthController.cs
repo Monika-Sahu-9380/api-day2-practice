@@ -11,5 +11,11 @@ namespace Day2ApiPractice.Controllers
         {
             return Ok("API is running fine");
         }
+
+        [HttpGet("status")]
+        public IActionResult Status()
+        {
+            return Ok("Healthy");
+        }        
     }
 }
