@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Day2ApiPractice.Services;
 
 namespace Day2ApiPractice.Controllers
 {
@@ -6,10 +7,18 @@ namespace Day2ApiPractice.Controllers
     [Route("api/health")]
     public class HealthController : ControllerBase
     {
+        private readonly IHealthService _healthService;
+
+        public HealthController(IHealthService healthService)
+        {
+            _healthService = healthService;
+        }
+    
         [HttpGet]
         public IActionResult CheckHealth()
         {
-            return Ok("API is running fine");
+            var result = _healthService.GetHealthStatus();
+            return Ok(result);
         }
 
         [HttpGet("status")]

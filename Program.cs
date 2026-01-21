@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();  // Swagger UI
+builder.Services.AddScoped<IHealthService, HealthService>();
 
 var app = builder.Build();
 
